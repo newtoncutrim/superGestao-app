@@ -8,6 +8,6 @@ use Illuminate\View\View;
 class SobreNosController extends Controller
 {
     public function sobrenos(): View {
-        return view('site.sobrenos');
+        return view('site.sobre-nos');
     }
 }
