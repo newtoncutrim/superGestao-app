@@ -11,10 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('fornecedores', function (Blueprint $table) {
-            $table->id();
-            $table->string('nome', 50);
-            $table->timestamps();
+        Schema::table('produto_detalhes', function (Blueprint $table) {
+            $table->unsignedBigInteger('unidade_id');
+            $table->foreign('unidade_id')->references('id')->on('unidades');
         });
     }
 
@@ -23,6 +22,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('fornecedores');
+        Schema::table('produto_detalhes', function (Blueprint $table) {
+            $table->dropForeign(['unidade_id']);
+        });
     }
 };
