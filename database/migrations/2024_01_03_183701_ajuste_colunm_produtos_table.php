@@ -15,6 +15,7 @@ return new class extends Migration
         Schema::table('produtos', function(Blueprint $table){
             $table->dropColumn('estoque_max');
             $table->dropColumn('estoque_min');
+            $table->dropColumn('preco_venda');
         });
     }
 
@@ -22,5 +23,11 @@ return new class extends Migration
      * Reverse the migrations.
      */
     public function down(): void
-    {}
+    {
+        Schema::table('produtos', function(Blueprint $table){
+            $table->integer('estoque_max');
+            $table->integer('estoque_min');
+            $table->decimal('preco_venda');
+        });
+    }
 };
